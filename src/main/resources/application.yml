@@ -1,0 +1,19 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: TODO-APP
+  datasource:
+    url: jdbc:postgresql://103.143.207.13:5432/cuonvc_dev
+    username: cuonvc_dev
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: dev
+        dialect: org.hibernate.dialect.PostgreSQLDialect
