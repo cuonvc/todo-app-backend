@@ -42,6 +42,15 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
+    public ResponseEntity<BaseResponse<Todo>> changeIsDone(String id, Boolean isDone) {
+        Todo todo = repository.findById(id)
+                .orElseThrow(() -> new APIException(HttpStatus.NOT_FOUND, TODO_NOT_FOUND));
+
+        todo.setIsDone(isDone);
+        return responseFactory.success(repository.save(todo));
+    }
+
+    @Override
     public ResponseEntity<BaseResponse<Todo>> detail(String id) {
         return responseFactory.success(repository.findById(id)
                 .orElseThrow(() -> new APIException(HttpStatus.NOT_FOUND, TODO_NOT_FOUND)));

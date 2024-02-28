@@ -27,6 +27,12 @@ public class TodoController {
         return todoService.update(id, todo);
     }
 
+    @PutMapping("/action/{id}")
+    public ResponseEntity<?> changeIsDoneStatus(@PathVariable("id") String id,
+                                                @RequestParam("isDone") Boolean isDone) {
+        return todoService.changeIsDone(id, isDone);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> detail(@PathVariable("id") String id) {
         return todoService.detail(id);
