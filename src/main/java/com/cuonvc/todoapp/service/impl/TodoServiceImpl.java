@@ -57,8 +57,10 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public ResponseEntity<BaseResponse<List<Todo>>> list() {
-        return responseFactory.success(repository.findAll());
+    public ResponseEntity<BaseResponse<List<Todo>>> list(String keyword) {
+        return (!keyword.isBlank() && !keyword.isEmpty())
+                ? responseFactory.success(repository.findAllByTitle(keyword.toLowerCase()))
+                : responseFactory.success(repository.findAll());
     }
 
     @Override

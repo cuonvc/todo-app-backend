@@ -12,6 +12,7 @@ import static com.cuonvc.todoapp.util.Constant.ApiVersion.API_V1;
 
 @RestController
 @RequestMapping(API_V1 + "/todo")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class TodoController {
 
@@ -38,9 +39,9 @@ public class TodoController {
         return todoService.detail(id);
     }
 
-    @GetMapping
-    public ResponseEntity<?> all() {
-        return todoService.list();
+    @GetMapping()
+    public ResponseEntity<?> all(@RequestParam(name = "keyword") String keyword) {
+        return todoService.list(keyword);
     }
 
     @DeleteMapping("/{id}")

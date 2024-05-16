@@ -11,6 +11,6 @@ public interface TodoService {
     ResponseEntity<BaseResponse<Todo>> update(String id, Todo todo);
     ResponseEntity<BaseResponse<Todo>> changeIsDone(String id, Boolean isDone);
     ResponseEntity<BaseResponse<Todo>> detail(String id);
-    ResponseEntity<BaseResponse<List<Todo>>> list();
+    ResponseEntity<BaseResponse<List<Todo>>> list(String keyword);
     ResponseEntity<BaseResponse<String>> delete(String id);
 }
